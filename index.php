@@ -8,7 +8,7 @@ use Medoo\Medoo;
 
 // Initialize
 $db = new Medoo($config['db']);
-if ($db == NULL) { die(); }
+if ($db === NULL) { die(); }
 
 $timeZoneSet = date_default_timezone_set($config['timezone']);
 if ($timeZoneSet === false) {
@@ -50,37 +50,37 @@ $html = '
   		width: 60px;
 			height: 60px;
   	}
-		
-		#header {
-      font-weight: bold;
-			font-size: 25px;
-			text-align: center;
-			margin: 10px 0 0 0;
-		}
-		
-		#event, #data_period {
-			font-size: 15px;
-			text-align: center;
-			margin: 10px;
-		}
-		
-		#event_name {
-			font-weight: bold;
-		}
-		
-		.table > thead > tr > th {
-		     vertical-align: middle;
-		}
-    
+
+	#header {
+		font-weight: bold;
+		font-size: 25px;
+		text-align: center;
+		margin: 10px 0 0 0;
+	}
+
+	#event, #data_period {
+		font-size: 15px;
+		text-align: center;
+		margin: 10px;
+	}
+
+	#event_name {
+		font-weight: bold;
+	}
+
+	.table > thead > tr > th {
+		 vertical-align: middle;
+	}
+
     .table > tbody > tr > td {
       vertical-align: middle;
     }
-		
-		#footer {
-			font-size: 13px;
-			text-align: center;
-			margin: 10px;
-		}
+
+	#footer {
+		font-size: 13px;
+		text-align: center;
+		margin: 10px;
+	}
   </style>
 </head>
 <body>
@@ -92,15 +92,15 @@ $html = '
 	</div>
 	<div id="shiny_table">
 		<table class="table table-striped table-hover table-sm">
-		  <thead class="thead-dark">
-		    <tr>
-			  <th scope="col"> </th>
-		      <th scope="col">Pokemon</th>
-		      <th scope="col">Shiny Rate</th>
-		      <th scope="col">Shiny / Total</th>
-		    </tr>
-		  </thead>
-		  <tbody id="table_body">';
+		    <thead class="thead-dark">
+		        <tr>
+			        <th scope="col"> </th>
+		            <th scope="col">Pokemon</th>
+		            <th scope="col">Shiny Rate</th>
+		            <th scope="col">Shiny / Total</th>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">';
 for ($i = 0; $i < count($shinyStats); $i++) {
 	$row = $shinyStats[$i];
 	$pokemonId = $row['pokemon_id'];
@@ -114,14 +114,13 @@ for ($i = 0; $i < count($shinyStats); $i++) {
 	$html .= '<td><img src="' . $pokemonImageUrl . '" width="48" height="48"/></td>';
 	$html .= '<td>' . $name . ' (#' . $pokemonId . ')</td>';
 	$html .= '<td>1/' . $rate . '</td>';
-	$html .= '<td>' . number_format($shiny) . ' / ' . number_format($total) . '</td>';
+	$html .= '<td>' . number_format($shiny) . '/' . number_format($total) . '</td>';
 	$html .= '</tr>';
 }
 $html .= '</tbody>
 		</table>
 	</div>
-	<div id="footer">
-	</div> 
+	<div id="footer"></div> 
 </body>
 </html>
 ';
@@ -131,7 +130,7 @@ echo $html;
 function getTotalCount($pokemon, $pokemonId) {
 	for ($i = 0; $i < count($pokemon); $i++) {
 		$row = $pokemon[$i];
-		if ($row['pokemon_id'] == $pokemonId) {
+		if ($row['pokemon_id'] === $pokemonId) {
 			return $row['count'];
 		}
 	}
