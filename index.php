@@ -20,7 +20,7 @@ $today = date('Y-m-d');
 $shinyStats = $db->select('pokemon_shiny_stats', [
     'date',
     'pokemon_id',
-    'count' => Medoo::raw('SUM('count')')
+    'count' => Medoo::raw('SUM(`count`)')
 ], [
     'date' => $today,
     'GROUP' => 'pokemon_id'
@@ -29,7 +29,7 @@ $shinyStats = $db->select('pokemon_shiny_stats', [
 $totalStats = $db->select('pokemon_iv_stats', [
     'date',
     'pokemon_id',
-    'count' => Medoo::raw('SUM('count')')
+    'count' => Medoo::raw('SUM(`count`)')
 ], [
     'date' => $today,
     'GROUP' => 'pokemon_id'
