@@ -23,6 +23,7 @@ $shinyStats = $db->select('pokemon_shiny_stats', [
     'count' => Medoo::raw('SUM(`count`)')
 ], [
     'date' => $today,
+    'count[>]' => 0,
     'GROUP' => 'pokemon_id'
 ]);
 
